@@ -1,0 +1,30 @@
+<h2 class="text-center">
+    {{ isUpdate ? 'Update' : 'Add'}} Todo
+</h2>
+<form [formGroup]="todoForm">
+    <div class="form-row">
+      <div class="form-group col-md-6 m-auto">
+        <label for="inputEmail4">Title</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Title" formControlName="title">
+      </div>
+      <div class="form-group col-md-6 m-auto">
+        <label for="inputEmail4">Description</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Description" formControlName="description">
+      </div>
+    </div>
+    <div class="form-control">
+        <mat-form-field class="date-control m-auto">
+            <mat-label>Due Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dueDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+</form>
+
+<div class="button">
+    <button class="btn btn-success d-block m-auto" (click)="add()" [disabled]="!todoForm.valid">{{ isUpdate ? 'Update' : 'Add'}} Todo</button>
+</div>
+

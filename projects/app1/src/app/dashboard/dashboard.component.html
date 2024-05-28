@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <div class="logout">
+            <button class="add-button btn btn-success" (click)="logout()">Logout</button>
+        </div>
+        <div class="header m-auto">
+            <h2 class="text-center d-block m-auto">Todos</h2>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5" *ngIf="todos.length > 0">
+    <div class="todo" *ngFor="let todo of todos">
+        <img class="todo-image" *ngIf="todo.attachment" [src]="todo.attachment">
+        <div class="title">{{ todo.title }}</div>
+        <div class="description">{{ todo.description }}</div>
+        <div class="due-date" *ngIf="todo.dueDate">Due Date: {{ getDate(todo.dueDate) | date: 'dd-MM-YYYY' }}</div>
+    </div>
+</div>
+<div class="no-list text-center mt-3" *ngIf="todos.length === 0">
+    No todos added
+</div>
